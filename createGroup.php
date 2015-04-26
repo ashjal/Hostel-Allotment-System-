@@ -11,6 +11,7 @@
 	<script type="text/javascript" src="jquery-ui.min.js"></script>
 	<script type="text/javascript" src="jquery-uniform.js"></script>
 </head>
+<?php
 
 <body>
 	<header class="green_grad">

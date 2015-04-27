@@ -3,48 +3,30 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <?php
-
+session_start();
+$var=$_SESSION['group_size'];
 if(! get_magic_quotes_gpc())
 {
-	$pass_key=addslashes($_POST['pass_key']);
-	$roll_no=addslashes($_POST['roll_no']);
-	$name=addslashes($_POST['name']);
-	$class=addslashes($_POST['class']);
-	$branch=addslashes($_POST['branch']);
-	$current_year=addslashes($_POST['current_year']);
-	$dob=addslashes($_POST['dob']);
-	$category=addslashes($_POST['category']);
-	$blood_group=addslashes($_POST['blood_group']);
-	$s_mobile=addslashes($_POST['s_mobile']);
-	$e_mail=addslashes($_POST['e_mail']);
-	$f_name=addslashes($_POST['f_name']);
-	$f_mobile=addslashes($_POST['f_mobile']);
-	$m_name=addslashes($_POST['m_name']);
-	$m_mobile=addslashes($_POST['m_name']);
-	$permanent_address=addslashes($_POST['permanent_address']);
-	$alternate_address=addslashes($_POST['alternate_address']);
+	for($i=1;$i<=$var;$i++) 
+	{
+		$haha="t".$i;
+		$haha1="unique_id_t".$i;
+		$t[$i]=addslashes($_POST[$haha]);
+		$t_id[$i]=addslashes($_POST[$haha1]);
+	}
 }
-
 else
 {
-	$pass_key=$_POST['pass_key'];
-	$roll_no=$_POST['roll_no'];
-	$name=$_POST['name'];
-	$class=$_POST['class'];
-	$branch=$_POST['branch'];
-	$current_year=$_POST['current_year'];
-	$dob=$_POST['dob'];
-	$category=$_POST['category'];
-	$blood_group=$_POST['blood_group'];
-	$s_mobile=$_POST['s_mobile'];
-	$e_mail=$_POST['e_mail'];
-	$f_name=$_POST['f_name'];
-	$f_mobile=$_POST['f_mobile'];
-	$m_name=$_POST['m_name'];
-	$m_mobile=$_POST['m_name'];
-	$permanent_address=$_POST['permanent_address'];
-	$alternate_address=$_POST['alternate_address'];
+	for($i=1;$i<=$var;$i++) 
+	{
+		$haha="t".$i;
+		$haha1="unique_id_t".$i;
+		$t[$i]=$_POST[$haha];
+		$t_id[$i]=$_POST[$haha1];
+	}
+	
 }
+$id=uniqid();
 $dbhost = 'localhost';
 $dbuser = 'root';
 @$conn = mysql_connect($dbhost, $dbuser);
@@ -53,18 +35,64 @@ mysql_select_db('hostel_g');
 if(! $conn )
 	die('Could not connect: ' . mysql_error());
 
-$sql="INSERT INTO register (pass_key,roll_no,name,class,branch,current_year,dob,category,blood_group,
-mobile_no,e_mail,father_name,father_mobile,mother_name,mother_mobile,permanent_address,alternate_address) 
-values ('$pass_key','$roll_no','$name','$class','$branch','$current_year','$dob','$category','$blood_group',
-'$s_mobile','$e_mail','$f_name','$f_mobile','$m_name','$m_mobile','$permanent_address','$alternate_address')";
 
-
-$retval = mysql_query($sql);
-if(! $retval )
+$flag_of_register=1;
+for($i=1;$i<=$var;$i++) 
 {
-	die('Could not enter data: ' . mysql_error());
+	$pass_key=$t_id[$i];
+	$roll_no=$t[$i];
+	$k="SELECT * FROM register WHERE pass_key='$pass_key' AND roll_no='$roll_no'";
+	$retval_k=mysql_query($k);
+	if(mysql_num_rows($retval_k)==0)
+	{
+		$flag_of_register=0;
+		break;
+	}
 }
 
-echo "ksjdfvb";
-//header("location:.php");
+
+if(!$flag_of_register)
+{
+	echo "Entered Data is wrong or one of the users is not registered"; 
+	die('aidbhsdb');
+	//header()
+}
+
+$flag_of_main_login=1;
+for($i=1;$i<=$var;$i++) 
+{
+	$roll_no=$t[$i];
+	$sql_k="select * from main_login where roll_no='$roll_no' and pass_key='$pass_key' ";
+	$retval_k=mysql_query($sql_k);
+	if(mysql_num_rows($retval_k)==1)
+	{
+		$flag_of_main_login=0;
+		break;
+	}
+}
+
+if(!$flag_of_main_login)
+{
+	echo "one of the users is already registered in another group"; 
+	die('aidbhsdb');
+}
+
+for($i=1;$i<=$var;$i++) 
+{
+	$roll_no=$t[$i];
+	
+	$sql_class="select class from register where roll_no='$roll_no'";
+	$val=mysql_query($sql_class);
+	
+	$get=mysql_fetch_array($val);
+	$class=$get['class'];
+	$sql="insert into main_login (roll_no,password,class) values('$roll_no','$id','$class')";
+	//echo $i;
+	mysql_query($sql);
+}
+
+echo 'entry done';
+unset($_SESSION['group_size']);
+session_destroy();
+		
 ?>

@@ -7,11 +7,9 @@
 	<link rel="stylesheet" href="jquery-ui.min.css" />
 	<link rel="stylesheet" type="text/css" href="group.css" >
 	<title>Group | Hostel-G</title>
-	<script type="text/javascript" src="jquery.min.js"></script>
-	<script type="text/javascript" src="jquery-ui.min.js"></script>
-	<script type="text/javascript" src="jquery-uniform.js"></script>
+	
 </head>
-<?php
+	
 
 <body>
 	<header class="green_grad">
@@ -35,7 +33,7 @@
 	</header>
 	<div class="body_area">
 		<div class="body_content">
-			<form method="POST" action="group.php" class="gray_grad box group_form">
+			<form method="POST" action="createGroup.php" class="gray_grad box group_form">
 				<input type="hidden" name="create_group" value="true">
 				<input type="hidden" name="ajax_request" value="true">
 				<table id="password_table">
@@ -46,27 +44,83 @@
 								<strong>NOTE : </strong>Once you create a group, you can&apos;t <strong>ADD/REMOVE </strong>a member.
 							</td>
 						</tr>
+						
 						<tr>
 							<td>
 								<label for="input_size">Number of members<sup class="req">*</sup> :</label>
 							</td>
-							<td>
-								<select id="input_size" name="group_size" class="required" title="Please select the number of members in your Group">
+							
+						<td>
+							<form method="post">
+								<select id="input_size" name="group_size" onChange="submit();" class="required" title="Please select the number of members in your Group">
 									<option>...</option>
-									<option>2</option>
-									<option>3</option>
-									<option>4</option>
+									<option value="2" >2</option>
+									<option value="3" >3</option>
+									<option value="4" >4</option>	
 								</select>
+							</form>	
+								
+								</form>
 							</td>
 						</tr>
 						
 					</tbody>
 				</table>
-			</form>
-		</div>
-	</div>
+			</form>	
+		
+	
+			<?php
+	 
+	 if(isset($_POST['group_size']))
+	 {
+		 echo '<table id="members_table">
+			<caption>Members Details</caption>
+			<tbody>';
+			
+		echo '<form method="post" action="save.php">
+			<tr>
+			<th>Roll Number</th>
+			<th>Unique ID</th>
+			</tr>';
+							
+		session_start();
+		$a=$_POST['group_size'];
+		for($i=1;$i<=$a;$i++)
+		{
+			$haha="t".$i;
+			$haha1="unique_id_t".$i;
+			echo '<tr>
+			<td>
+			<input type="text" name="'.$haha.'" class="required tip_left" title="Please provide Roll Number of group member">
+			</td>
+			
+			<td>
+			<input type="text" name="'.$haha1.'" class="required tip_right" title="Please provide Unique ID of group member.">
+			</td>
+			</tr>';
+		}
+		echo 
+			'<tr>
+			</tr>
+			<tr><br>
+			<td colspan="2">
+			<input type="submit" name="submit1"  value="Go Ahead">
+			</td>
+			</tr>';
+			echo '</tbody>';
+			echo '</form>';
+			$_SESSION['group_size']=$a;
+			
+		
+		}
+	?>
+	</table>
+	
 
-	<footer class="green_grad">
+	 	</div>
+	</div>
+		
+<footer class="green_grad">
 		<ul>
 			<li>
 				<a target="_blank" href="help.php">Instructions</a>
@@ -81,6 +135,7 @@
 			</li>
 		</ul>
 	</footer>
+		
 </body>
 
 </html>

@@ -41,13 +41,15 @@ session_start();
 			<?php
 				
 				$var=$_SESSION['no_of_seats1'];
-				$dbhost = 'localhost';
+				/*$dbhost = 'localhost';
 				$dbuser = 'root';
 				@$conn = mysql_connect($dbhost, $dbuser);
 				mysql_select_db('hostel_g');
 
 					if(! $conn )
 						die('Could not connect: ' . mysql_error());
+				*/
+				require("config.php");
 					
 				if($var==1)
 				{	

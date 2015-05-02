@@ -63,11 +63,12 @@ if(isset($_POST['submit']))
 		$alternate_address=$_POST['alternate_address'];
 		$room_type=$_POST['room_type'];
 	}
-	$dbhost = 'localhost';
+	/*$dbhost = 'localhost';
 	$dbuser = 'root';
 	@$conn = mysql_connect($dbhost, $dbuser);
 	mysql_select_db('hostel_g');
-	
+	*/
+	require("config.php");
 	$q="select * from register where roll_no='$roll_no' and pass_key='$pass_key'";
 	$retval_q=mysql_query($q);
 	if(mysql_num_rows($retval_q)==0)

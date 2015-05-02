@@ -20,12 +20,14 @@ if($_SESSION['group_size']<$no_of_seats)
 }
 
 
-@$conn = mysql_connect($dbhost, $dbuser);
+/*@$conn = mysql_connect($dbhost, $dbuser);
 mysql_select_db('hostel_g');
 
+require("config.php");
 if(! $conn )
 	die('Could not connect: ' . mysql_error());
-	
+*/
+require("config.php");	
 	
 	
 	if($room_no[0]==='A')

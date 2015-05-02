@@ -30,13 +30,17 @@ else
 	
 }
 
-$dbhost = 'localhost';
+/*$dbhost = 'localhost';
 $dbuser = 'root';
 @$conn = mysql_connect($dbhost, $dbuser);
 mysql_select_db('hostel_g');
 
 if(! $conn )
 	die('Could not connect: ' . mysql_error());
+	*/
+
+require("config.php");
+
 	$room_no=$_SESSION['room_no'];
 $flag_of_roll=1;
 for($i=1;$i<=$var;$i++) 

@@ -33,8 +33,10 @@ if(!isset($_SESSION['regno']))
   <body>
   <?php
   
-		@mysql_connect("localhost","root");
+		/*@mysql_connect("localhost","root");
 		mysql_select_db("hostel_g");
+		*/
+		require("config.php");
 		$password=$_SESSION['password'];
 		$array=mysql_query("select * from main_login where password='$password'");
 		$i=0;

@@ -27,11 +27,12 @@ else
 	
 }
 $id=uniqid();
-$dbhost = 'localhost';
+/*$dbhost = 'localhost';
 $dbuser = 'root';
 @$conn = mysql_connect($dbhost, $dbuser);
 mysql_select_db('hostel_g');
-
+*/
+require("config.php");
 if(! $conn )
 	die('Could not connect: ' . mysql_error());
 

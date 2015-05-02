@@ -7,8 +7,14 @@ $password=strip_tags($_POST['password']);
 
 if($regno&&$password)
 {	
+<<<<<<< HEAD
 	$connect=@mysql_connect("localhost","root") or die("Couldn't connect");
+=======
+	/*$connect=mysql_connect("localhost","root") or die("Couldn't connect");
+>>>>>>> origin/master
 	mysql_select_db('hostel_g') or die('Could not find db...');
+	*/
+	require("config.php");
 	$query=mysql_query("SELECT * FROM main_login WHERE roll_no='$regno' && password='$password'");
 	
 	

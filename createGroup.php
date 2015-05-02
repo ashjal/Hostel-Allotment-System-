@@ -1,5 +1,8 @@
 <!DOCTYPE HTML>
 <html lang='en' >
+<?php
+session_start();
+?>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -7,34 +10,29 @@
 	<link rel="stylesheet" href="jquery-ui.min.css" />
 	<link rel="stylesheet" type="text/css" href="group.css" >
 	<title>Group | Hostel-G</title>
-	<script type="text/javascript" src="jquery.min.js"></script>
-	<script type="text/javascript" src="jquery-ui.min.js"></script>
-	<script type="text/javascript" src="jquery-uniform.js"></script>
+	
 </head>
+	
 
 <body>
 	<header class="green_grad">
 		<table>
 			<tr>
 				<td class="td_small">
-					<a href="index.php">
-					<img height="80" width="100" src="img/jlogo.png" alt="Hostel-J Logo"/>
-					</a>
+					
 				</td>
 				<td class="td_big">
 					<h1>Hostel-G, Thapar University</h1>
 				</td>
 				<td class="td_small">
-					<a href="http://thapar.edu" target="_BLANK">
-					<img height="100" width="160" src="img/tulogo.png" alt="Thapar Logo"/>
-					</a>
+					
 				</td>
 			</tr>
 		</table>
 	</header>
 	<div class="body_area">
 		<div class="body_content">
-			<form method="POST" action="group.php" class="gray_grad box group_form">
+			<form method="POST" class="gray_grad box group_form">
 				<input type="hidden" name="create_group" value="true">
 				<input type="hidden" name="ajax_request" value="true">
 				<table id="password_table">
@@ -45,27 +43,96 @@
 								<strong>NOTE : </strong>Once you create a group, you can&apos;t <strong>ADD/REMOVE </strong>a member.
 							</td>
 						</tr>
+						
 						<tr>
 							<td>
 								<label for="input_size">Number of members<sup class="req">*</sup> :</label>
 							</td>
-							<td>
-								<select id="input_size" name="group_size" class="required" title="Please select the number of members in your Group">
-									<option>...</option>
-									<option>2</option>
-									<option>3</option>
-									<option>4</option>
+							
+						<td>
+							<form method="post">
+								<select id="input_size" name="group_size" onChange="submit();" class="required" title="Please select the number of members in your Group">
+									<option disabled selected >...</option>
+									<option <?php if(isset($_POST['group_size'])&&($_POST['group_size']==2)){ ?>selected <?php } ?>  value="2" >2  </option>
+									<option <?php if(isset($_POST['group_size'])&&($_POST['group_size']==3)){ ?>selected <?php } ?>  value="3" >3  </option>
+									<option <?php if(isset($_POST['group_size'])&&($_POST['group_size']==4)){ ?>selected <?php } ?>  value="4" >4  </option>	
 								</select>
+							</form>	
+							</form>	
+							
 							</td>
 						</tr>
-						
 					</tbody>
 				</table>
-			</form>
-		</div>
-	</div>
+			</form>	
+		
+	
+			<?php
+	 
+	 if(isset($_POST['group_size'])||isset($_SESSION['group_size']))
+	 {
+		 if(isset($_POST['group_size']))
+			$a=$_POST['group_size'];
+		elseif(isset($_SESSION['group_size']))
+				$a=0;
+		for($i=1;$i<=$a;$i++)
+		{
+			if($i==1)
+			{
+				echo '<table id="members_table">
+				<caption>Members Details</caption>
+				<tbody>';
+				
+				echo '<form method="post" action="save.php">
+					<tr>
+					<th>Roll Number</th>
+					<th>Unique ID</th>
+					</tr>';
+				
+			}
+			
+			$haha="t".$i;
+			$haha1="unique_id_t".$i;
+			echo '<tr>
+			<td>
+			<input type="text" name="'.$haha.'" class="required tip_left" title="Please provide Roll Number of group member">
+			</td>
+			
+			<td>
+			<input type="text" name="'.$haha1.'" class="required tip_right" title="Please provide Unique ID of group member.">
+			</td>
+			</tr>';
+		}
+		echo 
+			'<tr>
+			</tr>
+			<tr><br>
+			<td colspan="2">';
+			if($a!=0)
+				echo'<input type="submit" name="submit1"  value="Go Ahead">';
+			echo'</td></tr>';
+			if(isset($_SESSION['message']))
+			{
+				echo 
+				'<tr><br>
+				<td colspan="2">';
+				echo $_SESSION['message'];
+				unset($_SESSION['message']);
+				echo'</td></tr>';
+			}
+			echo '</tbody>';
+			echo '</form>';
+			$_SESSION['group_size']=$a;
+		}
+		
+	?>
+	</table>
+	
 
-	<footer class="green_grad">
+	 	</div>
+	</div>
+		
+<footer class="green_grad">
 		<ul>
 			<li>
 				<a target="_blank" href="help.php">Instructions</a>
@@ -80,6 +147,7 @@
 			</li>
 		</ul>
 	</footer>
+		
 </body>
 
 </html>

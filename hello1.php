@@ -41,15 +41,25 @@ session_start();
 			<?php
 				
 				$var=$_SESSION['no_of_seats1'];
+<<<<<<< HEAD
 				/*$dbhost = 'localhost';
 				$dbuser = 'root';
 				@$conn = mysql_connect($dbhost, $dbuser,"admin");
+=======
+				$dbhost = 'localhost';
+				$dbuser = 'root';
+				@$conn = mysql_connect($dbhost, $dbuser);
+>>>>>>> a9988615205327bdc969cb2fc05cecd06ae3f253
 				mysql_select_db('hostel_g');
 
 					if(! $conn )
 						die('Could not connect: ' . mysql_error());
+<<<<<<< HEAD
 				*/
 				require("config.php");	
+=======
+					
+>>>>>>> a9988615205327bdc969cb2fc05cecd06ae3f253
 				if($var==1)
 				{	
 					echo '<table id="members_table">

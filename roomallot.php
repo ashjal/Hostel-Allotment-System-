@@ -49,10 +49,15 @@ if(!isset($_GET['room_no']))
 		<div class="body_content">
 		<?php
   
+<<<<<<< HEAD
 		/*mysql_connect("localhost","root","admin");
 		mysql_select_db("hostel_g");
 		*/
 		require("config.php");
+=======
+		@mysql_connect("localhost","root");
+		mysql_select_db("hostel_g");
+>>>>>>> a9988615205327bdc969cb2fc05cecd06ae3f253
 		$_SESSION['room_no']=$_GET['room_no'];$a=$_GET['room_no'];
 					//$_SESSION['vac']
 							//$vac=$_GET['vac'];

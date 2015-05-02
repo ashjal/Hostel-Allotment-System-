@@ -22,6 +22,7 @@ else
 	}
 	
 }
+<<<<<<< HEAD
 /*$dbhost = 'localhost';
 $dbuser = 'root';
 @$conn = mysql_connect($dbhost, $dbuser,"admin");
@@ -33,6 +34,15 @@ if(! $conn )
 */
 	
 	require("config.php");
+=======
+$dbhost = 'localhost';
+$dbuser = 'root';
+@$conn = mysql_connect($dbhost, $dbuser);
+mysql_select_db('hostel_g');
+
+if(! $conn )
+	die('Could not connect: ' . mysql_error());
+>>>>>>> a9988615205327bdc969cb2fc05cecd06ae3f253
 	$room_no=$_SESSION['room_no'];
 		
 for($i=1;$i<=$var;$i++) 

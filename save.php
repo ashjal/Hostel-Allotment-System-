@@ -27,15 +27,25 @@ else
 	
 }
 $id=uniqid();
+<<<<<<< HEAD
 /*$dbhost = 'localhost';
 $dbuser = 'root';
 @$conn = mysql_connect($dbhost, $dbuser,"admin");
+=======
+$dbhost = 'localhost';
+$dbuser = 'root';
+@$conn = mysql_connect($dbhost, $dbuser);
+>>>>>>> a9988615205327bdc969cb2fc05cecd06ae3f253
 mysql_select_db('hostel_g');
 
 if(! $conn )
 	die('Could not connect: ' . mysql_error());
+<<<<<<< HEAD
 */
 	require("config.php");
+=======
+
+>>>>>>> a9988615205327bdc969cb2fc05cecd06ae3f253
 
 $flag_of_register=1;
 for($i=1;$i<=$var;$i++) 

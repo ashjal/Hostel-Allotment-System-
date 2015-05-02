@@ -7,10 +7,6 @@ if(!isset($_SESSION['regno']))
 {
 header("location:index.php");
 }
-//var_dump($_SESSION);
-
-
-
 ?>
 <html>
   <head>
@@ -22,12 +18,14 @@ header("location:index.php");
     src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 	<script>
     $(document).ready(
-            function() {
-                setInterval(function() {
+            function() 
+			{
+                setInterval(function() 
+				{
                      var url = 'demo.php';  
 	        $('#showa').load(url + ' #showa');
 			 $('#showb').load(url + ' #showb');
-                }, 5000);
+                }, 1000);
             });
 </script>
 
@@ -48,13 +46,19 @@ header("location:index.php");
 		{
 			echo $roll_no[$k].'&nbsp;&nbsp;&nbsp;&nbsp;';
 		}
+		if(isset($_SESSION['message']))
+		{
+			//echo '<br>';
+			echo $_SESSION['message'];
+			unset($_SESSION['message']);
+		}
 		echo '<form method="post" action="logout.php" style="float:right; margin: 0 100px 0 0; clear:both;">
 	<input type="submit" name="submit" value="LOGOUT">  
   </form>';
 		echo '<br><br>';
 		
 		?>
-	<div id="showb">
+		<div id="showb">
    <?php
   
 		@mysql_connect("localhost","root");
@@ -74,8 +78,8 @@ header("location:index.php");
 				echo '<hr size="pixels">';
 				echo '<br> ';
 			}
-			
 			echo '<ul class="small-grid" style="display:inline;">';
+			//echo '<li>';
 			if($c=="WR")
 			{
 				if($k!='B-311')
@@ -94,20 +98,22 @@ header("location:index.php");
 			{
 				if($c=='WR')
 				{	
-				echo '<li style="background-color:red; margin:0 2px 0 2px;">'.$c.'</li>';
+					echo '<li style="background-color:red; margin:0 2px 0 2px;">'.$c.'</li>';
 				}
 				else
 				{
-				echo '<li style="background-color:grey; margin:0 2px 0 2px;">'.$c.'</li>';
+					echo '<li style="background-color:grey; margin:0 2px 0 2px;">'.$c.'</li>';
 				}
 			}
+			//echo '</li>';
 			echo '</ul>';
 			
-			
+		
 		}
   
   ?>
- </div>
+  </div>
+ 
     <ul class="item-grid" style="margin:10px 0 10px 0px;">
       <li style="width:60px; margin:5px 100px 5px 0; text-align:center; color:white; padding-top:50px;">MAIN GATE</li>
       <li style="margin:5px 100px 5px 0;  background-color:green; text-align:center; color:white; padding-top:50px;">GROUND</li>

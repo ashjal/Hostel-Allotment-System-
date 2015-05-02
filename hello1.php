@@ -41,25 +41,14 @@ session_start();
 			<?php
 				
 				$var=$_SESSION['no_of_seats1'];
-<<<<<<< HEAD
-				/*$dbhost = 'localhost';
-				$dbuser = 'root';
-				@$conn = mysql_connect($dbhost, $dbuser,"admin");
-=======
 				$dbhost = 'localhost';
 				$dbuser = 'root';
 				@$conn = mysql_connect($dbhost, $dbuser);
->>>>>>> a9988615205327bdc969cb2fc05cecd06ae3f253
 				mysql_select_db('hostel_g');
 
 					if(! $conn )
 						die('Could not connect: ' . mysql_error());
-<<<<<<< HEAD
-				*/
-				require("config.php");	
-=======
 					
->>>>>>> a9988615205327bdc969cb2fc05cecd06ae3f253
 				if($var==1)
 				{	
 					echo '<table id="members_table">
@@ -86,7 +75,7 @@ session_start();
 						echo $_SESSION[$temp];
 						echo '</td><td>';
 						echo $get['name'];
-						echo '</td><td>';
+						echo '</td>';
 						echo'</tr>';
 
 						unset($_SESSION[$temp]);				
@@ -122,21 +111,11 @@ session_start();
 						echo '</td><td colspan="1" width="50">';
 						echo $_SESSION['room_no'];
 						echo'</td></tr>';
-						
-						//unset($_SESSION[$temp]);				
 					}
 					
-				}
-					
-					echo '<tr><td colspan="5"><a href="demo.php">Book For Others</a></td></tr>';
-				echo '</tbody></table>';
-				
-				//session_destroy();
-			}
-			//else
-			{
-				//header("location:index.php");
-				//die();
+				}					
+			echo '<tr><td colspan="5"><a href="demo.php">Book For Others</a></td></tr>';
+			echo '</tbody></table>';
 			}
 				
 			?>

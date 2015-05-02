@@ -42,18 +42,6 @@ session_start();
 				
 				$var=$_SESSION['group_size'];
 				unset($_SESSION['group_size']);
-<<<<<<< HEAD
-				/*$dbhost = 'localhost';
-					$dbuser = 'root';
-					@$conn = mysql_connect($dbhost, $dbuser,"admin");
-					mysql_select_db('hostel_g');
-				
-
-					if(! $conn )
-						die('Could not connect: ' . mysql_error());
-				*/
-				require("config.php");	
-=======
 				$dbhost = 'localhost';
 					$dbuser = 'root';
 					@$conn = mysql_connect($dbhost, $dbuser);
@@ -62,7 +50,6 @@ session_start();
 					if(! $conn )
 						die('Could not connect: ' . mysql_error());
 					
->>>>>>> a9988615205327bdc969cb2fc05cecd06ae3f253
 				if($var==1)
 				{	
 					echo '<table id="members_table">

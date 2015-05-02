@@ -18,65 +18,6 @@ function HAA_validateFields()
 isValid=false;$(this).tooltip('open');}});return isValid;}
 function HAA_togglePasswordFields($target,page)
 {
-<<<<<<< HEAD
-    if($target.val()!=='...'&&$target.val()!=='group')        
-    {
-        if($('.password_fields').length===0)
-        {
-            /*var $upper='<tr class="password_fields">'+'<td colspan="2"><strong>'+'Choose Password:</strong></td>'+'</tr>'+'<tr class="password_fields">'+'<td colspan="2"><strong>';
-            if(page=='register.lib')
-                {
-                    var message='Login ID used for Room Allotment will be same as your Unique ID.';
-                }
-            else
-            {
-                var message='Login ID will be system generated.';
-            }
-
-            var $lower='</strong></td>'+'</tr>'+'<tr class="password_fields">'+'<td><label for="input_password">Password<sup class="req">*</sup> :</td>'+'<td><input id="input_password" type="password" name="password"'+' title="Please choose a password. Password must be atleast 8 characters long."'+' class="required"></td>'+'</tr>'+'<tr class="password_fields">'+'<td><label for="input_confirm">Confirm Password<sup class="req">*</sup> :</td>'+'<td><input id="input_confirm" type="password" name="confirm_password"'+' title="Please confirm your password." class="required"></td>'+'</tr>';
-            var $password_fields=$($upper+message+$lower);
-            $target.closest('tr').after($password_fields);
-            $('#input_password, #input_confirm').tooltip(tooltip_right);
-            */
-        }
-    }
-    else
-    {
-        $('.password_fields').remove();
-    }
-}
-function HAA_submitForm($form)
-{
-    var $notification=HAA_showNotification();
-    var form_data=new FormData($($form)[0]);
-    $.ajax({type:'POST',url:
-    $form.attr('action'),data:form_data,cache:false,dataType:'json',processData:false,contentType:false,success:function(response)
-        {
-            $notification.remove();
-            var $response_dialog=null;
-            var dialog_title='Hostel-J';
-            var buttonOptions={};
-            buttonOptions['OK']=function()
-                {
-                    if(response.save&&response.redirect_url.length)
-                        {
-                            window.location.replace(response.redirect_url);
-                        }
-                    else
-                        {
-                            document.body.style.overflow="visible";
-                            $(this).dialog('close');
-                        }
-                };
-            if(response.success){var dialog_content='<div class="dialog_content">'+
-response.message+'</div>';$response_dialog=$(dialog_content).dialog({minWidth:525,height:300,modal:true,title:dialog_title,resizable:true,draggable:false,buttons:buttonOptions,open:function(){document.body.style.overflow="hidden";$('.ui-dialog-titlebar').addClass('green_grad shadow');$('.ui-dialog, .ui-dialog-buttonpane').addClass('gray_grad');$(this).closest('.ui-dialog').find('.ui-dialog-buttonpane button:first').focus();},close:function(){if(response.save&&response.redirect_url.length){window.location.replace(response.redirect_url);}
-document.body.style.overflow="visible";$(this).remove();}});}},error:function(){var $error=HAA_showNotification('Could not contact Server ! '+'Please check your Network Settings.','error');}});}
-function HAA_validatePasswords()
-{var isValid=true;if($('#input_password').length){if($('#input_password').val()!==$('#input_confirm').val()){HAA_showNotification('Passwords do not match.','error');isValid=false;}
-if($('#input_password').val().length<8){HAA_showNotification('Password must be atleast 8 characters long.','error');isValid=false;}
-if(!isValid){$('#input_password').focus();}}
-return isValid;}
-=======
 	if(!($target.val()!=='...'&&$target.val()!=='group'))
 	{
 		$('.password_fields').remove();
@@ -141,7 +82,6 @@ function HAA_submitForm($form)
 		}
 	});
 	}
->>>>>>> a9988615205327bdc969cb2fc05cecd06ae3f253
 
 $(document).ready(function()
 {
@@ -184,43 +124,6 @@ $(document).ready(function()
 	}
 function HAA_generateMemberFields(group_size)
 {
-<<<<<<< HEAD
-    var $members_table=$('#members_table');
-    if(curr_group_size<=group_size)
-        {
-            while(true)
-                {
-                    if(group_size==curr_group_size)
-                        {
-                            break;
-                        }
-                    var $member_row=$('<tr>'+'<td>'+'<input type="text" name="roll_no[]" class="required tip_left"'+' title="Please provide Roll Number of group member">'+'</td>'+'<td>'+'<input type="text" name="unique_id[]" class="required tip_right"'+' title="Please provide Unique ID of group member.">'+'</td>'+'</tr>');
-                    $member_row.find('.tip_left').tooltip(tooltip_left).mask(roll_no_format);
-                    $member_row.find('.tip_right').tooltip(tooltip_right).mask(unique_id_format);
-                    $members_table.find('tr:last').before($member_row);curr_group_size++;
-                }
-        }
-    else
-        {
-            if($members_table.length!==0)
-                {
-                    while(true)
-                        {
-                            if(group_size==curr_group_size)
-                                {
-                                    break;
-                                }
-                            $members_table.find('tr:last').prev().remove();
-                            curr_group_size--;
-                       }
-                }
-        }
-}
-
-jQuery.browser = {};
-
-(function () {
-=======
 	var $members_table=$('#members_table');
 	if(curr_group_size<=group_size)
 	{
@@ -257,7 +160,6 @@ jQuery.browser = {};
 (
 function () 
 {
->>>>>>> a9988615205327bdc969cb2fc05cecd06ae3f253
     jQuery.browser.msie = false;
     jQuery.browser.version = 0;
     if (navigator.userAgent.match(/MSIE ([0-9]+)\./)) 

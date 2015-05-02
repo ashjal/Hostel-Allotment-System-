@@ -5,7 +5,7 @@
 session_start();
 if(!isset($_SESSION['regno']))
 {
-header("location:index.php");
+	header("location:index.php");
 }
 ?>
 <html>

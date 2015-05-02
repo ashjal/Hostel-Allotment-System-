@@ -3,18 +3,10 @@
 <meta http-equiv="refresh" content="20">
 <?php
 session_start();
-/*if(!isset($_SESSION['regno']))
+if(!isset($_SESSION['regno']))
 {
-
 	header("location:index.php");
 }
-?>
-<?php
-
-if(!isset($_GET['room_no']))
-{
-	header("location:demo.php");
-}*/
 ?>
 
 <head>

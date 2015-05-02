@@ -56,8 +56,9 @@ session_start();
 					<tbody><br>';
 					
 					echo '<tr>
-							<th colspan="3">Roll Number</th>
-							<th >Name</th>
+							<th colspan="2">Roll Number</th>
+							<th colspan="1">Name</th>
+							<th colspan="1">Room No<th>
 							</tr>';
 						
 					for($i=1;$i<=$var;$i++)
@@ -73,11 +74,11 @@ session_start();
 					
 						
 						echo $_SESSION[$temp];
-						echo '</td><td>';
+						echo '</td><td colspan="1">';
 						echo $get['name'];
-						echo '</td>';
-						echo'</tr>';
-
+						echo '</td><td colspan="1" width="50">';
+						echo $_SESSION['room_no'];
+						echo'</td></tr>';
 						unset($_SESSION[$temp]);				
 					}
 				}
@@ -106,15 +107,19 @@ session_start();
 					
 						
 						echo $_SESSION[$temp];
-						echo '</td><td colspan="	 1">';
+						echo '</td><td colspan="1">';
 						echo $get['name'];
 						echo '</td><td colspan="1" width="50">';
 						echo $_SESSION['room_no'];
 						echo'</td></tr>';
 					}
 					
-				}					
+				}
+			if($_SESSION['group_size']>0)
 			echo '<tr><td colspan="5"><a href="demo.php">Book For Others</a></td></tr>';
+			else
+			echo '<tr><td colspan="5"><a href="logout.php">Logout</a></td></tr>';
+				
 			echo '</tbody></table>';
 			}
 				

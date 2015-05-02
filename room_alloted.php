@@ -1,10 +1,17 @@
 <!DOCTYPE HTML>
 <html lang='en' >
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
 <?php
 session_start();
+if(!isset($_SESSION['regno']))
+{
+	header("location:index.php");
+}
+?>
+
+<?php
 $var=$_SESSION['no_of_seats1'];
+$password=$_SESSION['password'];
 if(! get_magic_quotes_gpc())
 {
 	for($i=1;$i<=$var;$i++) 
@@ -36,8 +43,7 @@ for($i=1;$i<=$var;$i++)
 {
 	
 	$roll_no=$t[$i];
-	//echo $roll_no;
-	$sql_q="select * from register where roll_no='$roll_no'";
+	$sql_q="select * from main_login where roll_no='$roll_no' and password='$password'";
 	$retval_q=mysql_query($sql_q);
 	
 	if(mysql_num_rows($retval_q)==0)
@@ -122,8 +128,8 @@ for($i=1;$i<=$var;$i++)
 	$temp="roll".$i;
 	$_SESSION[$temp]=$t[$i];
 }
-
-
+$_SESSION['group_size']-=$var;
+echo "group_size =".$_SESSION['group_size'];
 
 header("location:hello1.php");
 

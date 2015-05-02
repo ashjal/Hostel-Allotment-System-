@@ -1,8 +1,9 @@
 <?php
 if(isset($_SESSION))
-session_destroy();
-session_unset();
-
+{
+	session_destroy();
+	session_unset();
+}
 ?>
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->

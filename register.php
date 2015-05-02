@@ -64,8 +64,8 @@ if(isset($_POST['submit']))
 	}
 	$dbhost = 'localhost';
 	$dbuser = 'root';
-	@$conn = mysql_connect($dbhost, $dbuser);
-	mysql_select_db('hostel_g');
+	@$conn = mysql_connect($dbhost, $dbuser,'');
+	mysql_select_db('hostelg');
 	
 	$q="select * from register where roll_no='$roll_no' and pass_key='$pass_key'";
 	$retval_q=mysql_query($q);
@@ -87,7 +87,7 @@ if(isset($_POST['submit']))
 			if($room_type==="individual")
 			{
 				$password=uniqid();
-				$sql="insert into main_login (roll_no,password) values ('$roll_no','$password')";
+				$sql="insert into main_login (roll_no,password,class) values('$roll_no','$password','$class')";
 				$retval=mysql_query($sql);	
 			}
 			echo "your password is : $password";
@@ -150,7 +150,7 @@ if(isset($_POST['submit']))
 </td>
 
 <td>
-<input type="text" class="required" id="input_unique_id" name="pass_key" title="Please provide your Passkey available in your Web-Kiosk under Hostel Choice.">
+<input type="text" required class="required" id="input_unique_id" name="pass_key" title="Please provide your Passkey available in your Web-Kiosk under Hostel Choice.">
 </td>
 
 </tr>
@@ -162,7 +162,7 @@ if(isset($_POST['submit']))
 </td>
 
 <td>
-<input type="text" class="required" id="input_roll_no" name="roll_no" title="Please provide your University Roll Number">
+<input type="text" required class="required" id="input_roll_no" name="roll_no" title="Please provide your University Roll Number">
 </td>
 
 </tr>
@@ -174,33 +174,21 @@ if(isset($_POST['submit']))
 </td>
 
 <td>
-<input type="text" class="required" id="input_name" name="name" title="Please provide your Full Name">
+<input type="text" required class="required" id="input_name" name="name" title="Please provide your Full Name">
 </td>
 
 </tr>
-<!--
-<td>
-<label for="input_photo">Photo<sup class="req">*</sup> :</label>
-</td>
-
-<td>
-<input type="file" class="required" id="input_photo" name="photo" accept="image/*" title="Please provide your latest Passport size photograph (<2MB)">
-</td>
-
-</tr>
--->
 <tr>
 
 <td>
 <label for="input_class">Class<sup class="req">*</sup> :</label>
 </td>
 
-<td><select name="class" class="required" id="input_class" title="Please provide your Class"><option>...</option>
-<option>BTech</option>
-<option>MBA</option>
-<option>MSc</option>
+<td><select name="class" required class="required" id="input_class" title="Please provide your Class">
+<option selected="selected">BTech</option>
+
 <option>MTech</option>
-<option>MCA</option>
+
 <option>PHD</option>
 </select>
 </td>
@@ -214,7 +202,7 @@ if(isset($_POST['submit']))
 </td>
 
 <td>
-<input type="text" class="required" id="input_branch" name="branch" title="Please provide your Branch">
+<input type="text" required class="required" id="input_branch" name="branch" title="Please provide your Branch">
 </td>
 
 </tr>
@@ -224,13 +212,12 @@ if(isset($_POST['submit']))
 <label for="input_year">Current Year<sup class="req">*</sup> :</label>
 </td>
 
-<td><select name="current_year" class="required" id="input_year" title="Please provide your current Year of study">
-<option>...</option>
+<td><select name="current_year" required class="required" id="input_year" title="Please provide your current Year of study">
+
 <option>1</option>
-<option>2</option>
+<option selected="selected">2</option>
 <option>3</option>
-<option>4</option>
-<option>5</option>
+
 </select>
 </td>
 
@@ -243,7 +230,7 @@ if(isset($_POST['submit']))
 </td>
 
 <td>
-<input type="text" id="input_dob" class="datefield required" name="dob" title="Please provide your Date Of Birth (YYYY-MM-DD)">
+<input type="text" id="input_dob" required class="datefield required" name="dob" title="Please provide your Date Of Birth (YYYY-MM-DD)">
 </td>
 
 </tr>
@@ -255,9 +242,9 @@ if(isset($_POST['submit']))
 </td>
 
 <td>
-<select name="category" class="required" id="input_category" title="Please provide your Category">
-<option>...</option>
-<option>GEN</option>
+<select name="category" class="required" required id="input_category" title="Please provide your Category">
+
+<option selected="selected">GEN</option>
 <option>SC</option>
 <option>ST</option>
 <option>BC</option>
@@ -274,8 +261,8 @@ if(isset($_POST['submit']))
 </td>
 
 <td>
-<select name="blood_group" class="required" id="input_blood" title="Please provide your Blood Group">
-<option>...</option>
+<select name="blood_group" required class="required" id="input_blood" title="Please provide your Blood Group">
+
 <option>A+</option>
 <option>A-</option>
 <option>B+</option>
@@ -296,7 +283,7 @@ if(isset($_POST['submit']))
 </td>
 
 <td>
-<input type="text" id="input_stud_mob" class="mobilefield required" name="s_mobile" title="Please provide your Mobile number">
+<input type="text" required id="input_stud_mob"  maxlength="10" minlength="10" class="mobilefield required" name="s_mobile" title="Please provide your Mobile number">
 </td>
 </tr>
 
@@ -306,7 +293,7 @@ if(isset($_POST['submit']))
 </td>
 
 <td>
-<input type="text" class="required" id="input_email" name="e_mail" title="Please provide your valid Email address">
+<input type="email"  required class="required" id="input_email" name="e_mail" title="Please provide your valid Email address">
 </td>
 
 </tr>
@@ -316,7 +303,7 @@ if(isset($_POST['submit']))
 </td>
 
 <td>
-<input type="text" class="required" id="input_father_name" name="f_name" title="Please provide your Father&apos;s Name (excluding Title)">
+<input type="text" required class="required" id="input_father_name" name="f_name" title="Please provide your Father&apos;s Name (excluding Title)">
 </td>
 </tr>
 
@@ -327,30 +314,7 @@ if(isset($_POST['submit']))
 </td>
 
 <td>
-<input type="text" id="input_father_mob" class="mobilefield required" name="f_mobile" title="Please provide your Father&apos;s Mobile number">
-</td>
-
-</tr>
-
-<tr>
-<td>
-<label for="input_mother_name">Mother&apos;s Name<sup class="req">*</sup> :</label>
-</td>
-
-<td>
-<input type="text" class="required" id="input_mother_name" name="m_name" title="Please provide your Mother&apos;s Name (excluding Title)">
-</td>
-
-</tr>
-
-<tr>
-
-<td>
-<label for="input_mother_mob">Mother&apos;s Mobile :</label>
-</td>
-
-<td>
-<input type="text" id="input_mother_mob" class="mobilefield" name="m_mobile" title="Please provide your Mother&apos;s Mobile number">
+<input type="text" maxlength="10" minlength="10" required id="input_father_mob" class="mobilefield required" name="f_mobile" title="Please provide your Father&apos;s Mobile number">
 </td>
 
 </tr>
@@ -362,7 +326,7 @@ if(isset($_POST['submit']))
 </td>
 
 <td>
-<textarea class="required" id="input_addr" name="permanent_address" title="Please provide your Permanent Address"></textarea>
+<textarea class="required" required id="input_addr" name="permanent_address" title="Please provide your Permanent Address"></textarea>
 </td>
 
 </tr>
@@ -374,7 +338,7 @@ if(isset($_POST['submit']))
 </td>
 
 <td>
-<textarea id="input_alt_addr" name="alternate_address" title="Please provide your Alternate Address (if any)"></textarea>
+<textarea id="input_alt_addr" required name="alternate_address" title="Please provide your Alternate Address (if any)"></textarea>
 </td>
 
 </tr>
@@ -387,9 +351,9 @@ if(isset($_POST['submit']))
 </td>
 
 <td>
-<select name="room_type" class="required" id="input_type" title="Please select whether you want to take room as an Individual or as a part of a Group">
-<option>...</option>
-<option value="individual">an Individual</option>
+<select name="room_type" required class="required" id="input_type" title="Please select whether you want to take room as an Individual or as a part of a Group">
+
+<option value="individual" selected="selected">an Individual</option>
 <option value="group">a part of a Group</option>
 </select></td>
 
@@ -398,7 +362,7 @@ if(isset($_POST['submit']))
 
 
 <td colspan="2">
-<input type="checkbox" id="input_agreement" name="agreement">
+<input type="checkbox"  required id="input_agreement" name="agreement">
 <label for="input_agreement">I have read all <a href="rules.pdf" target="_blank">
 Hostel Rules &amp; Regulations</a>. 
 I will abide by all of them failing which authorities can take punitive action.

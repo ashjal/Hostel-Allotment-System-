@@ -51,32 +51,30 @@ if(!isset($_GET['room_no']))
   
 		@mysql_connect("localhost","root");
 		mysql_select_db("hostel_g");
-		$_SESSION['room_no']=$_GET['room_no'];$a=$_GET['room_no'];
-					//$_SESSION['vac']
-							//$vac=$_GET['vac'];
-							$room_no=$a;
-							
-							if($room_no[0]==='A')
-							{
-								
-								$vac=mysql_query("select vacancy from block_a where room_no='$room_no'");
-							}
-							else
-							{
-								
-								$vac=mysql_query("select vacancy from block_b where room_no='$room_no'");
-							}	
+		$_SESSION['room_no']=$_GET['room_no'];
+		$a=$_GET['room_no'];
+			$room_no=$a;
+			
+			if($room_no[0]==='A')
+			{	
+				$vac=mysql_query("select vacancy from block_a where room_no='$room_no'");
+			}
+			else
+			{
+				
+				$vac=mysql_query("select vacancy from block_b where room_no='$room_no'");
+			}	
 
-							if($get=mysql_fetch_array($vac))
-							{
-								$vacc=$get['vacancy'];
-								
-							}	
-							if($vacc===0)
-							{
-								header("location:demo.php");
-							}
-								
+			if($get=mysql_fetch_array($vac))
+			{
+				$vacc=$get['vacancy'];
+				
+			}	
+			if($vacc===0)
+			{
+				header("location:demo.php");
+			}
+				
 		?>
 			<form method="POST" class="gray_grad box group_form" action="val_del.php">
 				<input type="hidden" name="create_group" value="true">

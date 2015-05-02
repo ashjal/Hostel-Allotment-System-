@@ -75,7 +75,7 @@ session_start();
 						echo $_SESSION[$temp];
 						echo '</td><td>';
 						echo $get['name'];
-						echo '</td><td>';
+						echo '</td>';
 						echo'</tr>';
 
 						unset($_SESSION[$temp]);				
@@ -111,21 +111,11 @@ session_start();
 						echo '</td><td colspan="1" width="50">';
 						echo $_SESSION['room_no'];
 						echo'</td></tr>';
-						
-						//unset($_SESSION[$temp]);				
 					}
 					
-				}
-					
-					echo '<tr><td colspan="5"><a href="demo.php">Book For Others</a></td></tr>';
-				echo '</tbody></table>';
-				
-				//session_destroy();
-			}
-			//else
-			{
-				//header("location:index.php");
-				//die();
+				}					
+			echo '<tr><td colspan="5"><a href="demo.php">Book For Others</a></td></tr>';
+			echo '</tbody></table>';
 			}
 				
 			?>

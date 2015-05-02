@@ -23,6 +23,7 @@
 <?php
 if(isset($_POST['submit']))
 {
+	session_start();
 	
 	if(!get_magic_quotes_gpc())
 	{
@@ -64,8 +65,8 @@ if(isset($_POST['submit']))
 	}
 	$dbhost = 'localhost';
 	$dbuser = 'root';
-	@$conn = mysql_connect($dbhost, $dbuser,'');
-	mysql_select_db('hostelg');
+	@$conn = mysql_connect($dbhost, $dbuser);
+	mysql_select_db('hostel_g');
 	
 	$q="select * from register where roll_no='$roll_no' and pass_key='$pass_key'";
 	$retval_q=mysql_query($q);
@@ -88,9 +89,16 @@ if(isset($_POST['submit']))
 			{
 				$password=uniqid();
 				$sql="insert into main_login (roll_no,password,class) values('$roll_no','$password','$class')";
-				$retval=mysql_query($sql);	
+				$retval=mysql_query($sql);
+				$_SESSION['id']=$password;	
+				$_SESSION['group_size']=1;
+				$_SESSION['roll1']=$roll_no;
+				header("location:hello.php");
+				die();
+				
 			}
-			echo "your password is : $password";
+			header("location:index.php");
+			//echo "your password is : $password";
 		}
 		else
 		{
@@ -112,8 +120,7 @@ if(isset($_POST['submit']))
 <table>
 <tr>
 <td class="td_small">
-<a href="index.php">
-<img height="80" width="100" src="img/jlogo.png" alt="Hostel-J Logo"/>
+
 </a>
 </td>
 
@@ -122,8 +129,7 @@ if(isset($_POST['submit']))
 <h1> Hostel-G, Thapar University</h1>
 </td>
 <td class="td_small">
-<a href="http://thapar.edu" target="_BLANK">
-<img height="100" width="160" src="img/tulogo.png" alt="Thapar Logo"/>
+
 </a>
 </td>
 </tr>

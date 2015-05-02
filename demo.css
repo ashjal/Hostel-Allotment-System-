@@ -1,0 +1,76 @@
+@import url(http://fonts.googleapis.com/css?family=Abel);
+@import url(http://fonts.googleapis.com/css?family=Abril+Fatface);
+
+body { 
+  background-image: url(pat.jpg);
+  font-family: 'Abel',sans-serif;
+  margin: 20px 0 0 40px;
+}
+
+h1 { 
+  font-family: 'Abril Fatface', cursive; 
+  font-weight: normal;
+}
+
+.small-grid,
+.item-grid {
+  width: 100%;
+  padding: 0; 
+  margin: 0; 
+  
+}
+
+.link{
+ margin: 0 ;
+ padding: 0 0px 0 0px;
+ 
+}
+hr { 
+    display: block;
+    margin-top: -0.1em;
+    margin-bottom: -0.8em;
+    margin-left: auto;
+    margin-right: 2em;
+    border-style: dashed;
+    border-width: 1px;
+}
+
+.small-grid li,
+.item-grid li {
+  border-radius: 10px;
+  box-shadow: -1px 1px 2px 1px rgba(0, 0, 0, 0.2);
+  background-color: #666;
+  height: 70px;
+  width: 350px;
+  list-style-type: none;
+  margin: 0px 0px 0px 0;
+  padding: 5px;
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+  vertical-align: top;
+}
+
+.small-grid li { 
+  background-color: #6FC696; 
+  width: 40px;
+  height: 42px;
+}
+a:link {
+    color: #000000;
+}
+
+/* visited link */
+a:visited {
+    color: #FFFFFF;
+}
+
+/* mouse over link */
+a:hover {
+    color: red;
+}
+
+/* selected link */
+a:active {
+    color: green;
+}

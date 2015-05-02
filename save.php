@@ -39,9 +39,9 @@ if(! $conn )
 $flag_of_register=1;
 for($i=1;$i<=$var;$i++) 
 {
-	$pass_key=$t_id[$i];
+	$password=$t_id[$i];
 	$roll_no=$t[$i];
-	$k="SELECT * FROM register WHERE pass_key='$pass_key' AND roll_no='$roll_no'";
+	$k="SELECT * FROM register WHERE pass_key='$password' AND roll_no='$roll_no'";
 	$retval_k=mysql_query($k);
 	if(mysql_num_rows($retval_k)==0)
 	{
@@ -51,18 +51,18 @@ for($i=1;$i<=$var;$i++)
 }
 
 
-if(!$flag_of_register)
+if($flag_of_register==0)
 {
-	echo "Entered Data is wrong or one of the users is not registered"; 
-	die('aidbhsdb');
-	//header()
+	$_SESSION['message']="Entered Data is wrong or one of the users is not registered"; 
+	header("location:createGroup.php");
+	die();
 }
 
 $flag_of_main_login=1;
 for($i=1;$i<=$var;$i++) 
 {
 	$roll_no=$t[$i];
-	$sql_k="select * from main_login where roll_no='$roll_no' and pass_key='$pass_key' ";
+	$sql_k="select * from main_login where roll_no='$roll_no'";
 	$retval_k=mysql_query($sql_k);
 	if(mysql_num_rows($retval_k)==1)
 	{
@@ -71,10 +71,11 @@ for($i=1;$i<=$var;$i++)
 	}
 }
 
-if(!$flag_of_main_login)
+if($flag_of_main_login==0)
 {
-	echo "one of the users is already registered in another group"; 
-	die('aidbhsdb');
+	$_SESSION['message']="one of the users is already registered in another group"; 
+	header("location:createGroup.php");
+	die();
 }
 
 for($i=1;$i<=$var;$i++) 
@@ -91,8 +92,14 @@ for($i=1;$i<=$var;$i++)
 	mysql_query($sql);
 }
 
-echo 'entry done';
-unset($_SESSION['group_size']);
-session_destroy();
+$_SESSION['id']=$id;
+for($i=1;$i<=$var;$i++)
+{
+	$temp="roll".$i;
+	$_SESSION[$temp]=$t[$i];
+}
+
+header("location:hello.php");
+
 		
 ?>

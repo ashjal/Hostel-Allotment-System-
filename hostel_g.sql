@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 26, 2015 at 10:09 PM
+-- Generation Time: Apr 28, 2015 at 08:29 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -46,17 +46,52 @@ INSERT INTO `login` (`pass_key`, `roll_no`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `main_login` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `roll_no` int(11) NOT NULL,
   `password` varchar(20) NOT NULL,
-  PRIMARY KEY (`roll_no`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `class` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=35 ;
 
 --
 -- Dumping data for table `main_login`
 --
 
-INSERT INTO `main_login` (`roll_no`, `password`) VALUES
-(101213061, '553d3fd2715d0');
+INSERT INTO `main_login` (`id`, `roll_no`, `password`, `class`) VALUES
+(1, 101213055, '553e1d7e9770e', 'BTech'),
+(2, 101213061, '553e1d7e9770e', 'BTech'),
+(3, 0, '553ea361ae987', ''),
+(4, 0, '553ea361ae987', ''),
+(5, 0, '553ea36b70db4', ''),
+(6, 0, '553ea36b70db4', ''),
+(7, 0, '553ea4e6e4672', ''),
+(8, 0, '553ea4e6e4672', ''),
+(9, 0, '553ea52a2abf5', ''),
+(10, 0, '553ea52a2abf5', ''),
+(11, 0, '553ea561441cf', ''),
+(12, 0, '553ea561441cf', ''),
+(13, 0, '553ea580afd15', ''),
+(14, 0, '553ea580afd15', ''),
+(15, 0, '553ea5af29948', ''),
+(16, 0, '553ea5af29948', ''),
+(17, 0, '553ea60963066', ''),
+(18, 0, '553ea60963066', ''),
+(19, 0, '553ea73e1c076', ''),
+(20, 0, '553ea73e1c076', ''),
+(21, 0, '553ea782121c9', ''),
+(22, 0, '553ea782121c9', ''),
+(23, 0, '553ea7af8c9e6', ''),
+(24, 0, '553ea7af8c9e6', ''),
+(25, 0, '553ea8ae0b288', ''),
+(26, 0, '553ea8ae0b288', ''),
+(27, 0, '553ea97e8c5fc', ''),
+(28, 0, '553ea97e8c5fc', ''),
+(29, 0, '553ea9b3ed1c5', ''),
+(30, 0, '553ea9b3ed1c5', ''),
+(31, 0, '553ea9d7ecefc', ''),
+(32, 0, '553ea9d7ecefc', ''),
+(33, 0, '553f28947bad1', ''),
+(34, 0, '553f28947bad1', '');
 
 -- --------------------------------------------------------
 
@@ -88,7 +123,30 @@ CREATE TABLE IF NOT EXISTS `register` (
 --
 
 INSERT INTO `register` (`pass_key`, `roll_no`, `name`, `class`, `branch`, `current_year`, `dob`, `category`, `blood_group`, `mobile_no`, `e_mail`, `father_name`, `father_mobile`, `permanent_address`, `alternate_address`) VALUES
-('qwerty', 101213061, 'skuvb', 'BTech', 'eugb', 1, '1988-01-12', 'GEN', 'A+', '348798437', 'vartul.mittal@gmail.com', '240598', 'w904t85943', 'ekjfgiuer', 'egkjbkjer');
+('D2QJM1', 101213055, 'vartul mittal', 'BTech', 'CSE', 3, '1988-01-12', 'GEN', 'B+', '8090989', 'vartul.mittal@gmail.com', 'skjbvubw', '398469', 'eihrgvbyu uiqefy', 'ldkfvbuiwn'),
+('qwerty', 101213061, 'vartul11', 'BTech', 'iergb', 1, '1988-01-24', 'GEN', 'A+', 'wkrhvb', 'vartul.mittal@gmail.com', 'iwrbv', 'eigb', 'ibuiwe f we', 'wjrgbiuwe');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rooms_1`
+--
+
+CREATE TABLE IF NOT EXISTS `rooms_1` (
+  `roomno` varchar(255) NOT NULL,
+  `vacency` int(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rooms_4`
+--
+
+CREATE TABLE IF NOT EXISTS `rooms_4` (
+  `roomno` varchar(255) NOT NULL,
+  `vacency` int(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
